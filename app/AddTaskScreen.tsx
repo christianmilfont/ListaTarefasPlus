@@ -1,7 +1,7 @@
 // src/screens/AddTaskScreen.tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
-import { addTask } from '../services/tasks'; // O serviço que você forneceu
+import { addTask } from '../src/services/tasks'; // O serviço que você forneceu
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
  

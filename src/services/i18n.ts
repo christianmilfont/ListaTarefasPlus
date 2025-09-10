@@ -1,20 +1,18 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import * as Localization from 'react-native-localize';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
 
-import pt from '../locales/PT.json';
-import en from '../locales/EN.json';
+import pt from '../locales/pt.json'
+import en from '../locales/en.json'
 
 i18n.use(initReactI18next).init({
-  lng: Localization.getLocales()[0].languageCode,
-  fallbackLng: 'en',
-  resources: {
-    en: { translation: en },
-    pt: { translation: pt }
-  },
-  interpolation: {
-    escapeValue: false
-  }
-});
-
-export default i18n;
+    lng:'pt',//Idioma padrão
+    fallbackLng:'en',//fallback se não encontrar tradução
+    resources:{
+        pt:{translation:pt},
+        en:{translation:en}
+    },
+    interpolation:{
+        escapeValue:false//Proteção contra ataque XSS
+    }
+})
+export default i18n

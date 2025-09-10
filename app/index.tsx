@@ -4,9 +4,9 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'reac
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 import { signInWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth';
-import {auth} from '../services/firebaseConfig'
-import { useTheme } from '../context/ThemeContext';
-import ThemeToggleButton from '../components/ThemeButtom';
+import {auth} from '../src/services/firebaseConfig'
+import { useTheme } from '../src/context/ThemeContext';
+import ThemeToggleButton from '../src/components/ThemeButtom';
 import{useTranslation} from 'react-i18next'
 
 export default function LoginScreen() {

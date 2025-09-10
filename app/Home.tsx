@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
-import { useTasks } from '../hooks/useTasks';
+import { useTasks } from '../src/hooks/useTasks';
 import { useTranslation } from 'react-i18next';
-import { useMotivationalQuote } from '../hooks/useMotivationalQuote';
+import { useMotivationalQuote } from '../src/hooks/useMotivationalQuote';
 
 export default function HomeScreen() {
   const { tasks, loading } = useTasks();
