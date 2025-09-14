@@ -1,3 +1,50 @@
+# ListaTarefasPlus
+
+ListaTarefasPlus é uma aplicação de lista de tarefas desenvolvida em **TypeScript**, projetada para ajudar na organização e gestão de tarefas diárias.
+
+---
+
+## Tecnologias Utilizadas
+
+- **TypeScript**
+- **React Native**
+- **Expo** (se estiver usando para rodar o app)
+- **AsyncStorage** (para armazenamento local)
+- **React Navigation** (para navegação entre telas)
+- **Hooks customizados** (para gerenciamento de estado)
+
+---
+
+## Estrutura do Projeto
+
+O projeto está organizado da seguinte forma:
+```
+ListaTarefasPlus/
+├─ src/
+│ ├─ components/ # Componentes reutilizáveis
+│ ├─ hooks/ # Hooks customizados
+│ ├─ screens/ # Telas da aplicação
+│ └─ utils/ # Funções utilitárias
+├─ assets/ # Arquivos estáticos (imagens, ícones)
+├─ App.tsx # Arquivo principal da aplicação
+├─ package.json # Dependências e scripts
+├─ tsconfig.json # Configurações do TypeScript
+└─ app.json # Configurações do Expo
+```
+
+---
+
+## Como Executar o Projeto
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/christianmilfont/ListaTarefasPlus.git
+
+```
+
+# Imagens documentando as ações do projeto rodando via Expo Go em meu Iphone
+
 <img width="1871" height="926" alt="image" src="https://github.com/user-attachments/assets/9103534f-ba97-4ddc-a7aa-72b7f26325f6" />
 
 
