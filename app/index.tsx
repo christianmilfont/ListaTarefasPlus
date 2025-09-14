@@ -128,7 +128,7 @@ export default function LoginScreen() {
 
       <ThemeToggleButton/>
 
-      <Link href="CadastrarScreen" style={{marginTop:20,color:colors.text,marginLeft:150}}>Cadastre-se</Link>
+      <Link href="FormScreen" style={{marginTop:20,color:colors.text,marginLeft:150}}>Cadastre-se</Link>
       <Text style={{marginTop:20,color:colors.text,marginLeft:130}} onPress={esqueceuSenha}>Esqueceu a senha</Text>
     </View>
   );

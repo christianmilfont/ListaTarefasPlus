@@ -1,62 +1,84 @@
 // src/screens/AddTaskScreen.tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
-import { addTask } from '../src/services/tasks'; // O serviço que você forneceu
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
- 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { addTask } from '../src/services/tasks'; // sua service de tasks
+
+// 1️⃣ Tipagem das rotas do Stack
+type RootStackParamList = {
+  HomeScreen: undefined;
+  AddTaskScreen: undefined;
+};
+
+// 2️⃣ Tipagem do navigation para essa tela
+type AddTaskScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'AddTaskScreen'
+>;
+
 const AddTaskScreen = () => {
   const [task, setTask] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const navigation = useNavigation();
- 
+  const navigation = useNavigation<AddTaskScreenNavigationProp>();
+
   const handleAddTask = async () => {
     if (!task) {
       setError('A tarefa não pode estar vazia');
       return;
     }
- 
+
     try {
       setIsLoading(true);
+
       const userData = await AsyncStorage.getItem('@user');
       if (!userData) {
         setError('Usuário não encontrado');
         return;
       }
- 
+
       const user = JSON.parse(userData);
-      await addTask(user.uid, task); // Usando o addTask da sua service
-      setTask(''); // Limpar o campo de tarefa
-      setError(''); // Limpar o erro
-      setIsLoading(false);
-      navigation.goBack(); // Voltar para a tela anterior (a lista de tarefas)
+      await addTask(user.uid, task); // salvar a task
+      setTask('');
+      setError('');
+      console.log('Task salva com sucesso!');
     } catch (e) {
-      console.error(e);
-      setIsLoading(false);
+      console.error('Erro ao salvar task:', e);
       setError('Erro ao adicionar tarefa');
+    } finally {
+      setIsLoading(false);
     }
   };
- 
+
   return (
-<View style={styles.container}>
-<Text style={styles.title}>Adicionar Tarefa</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Adicionar Tarefa</Text>
       {error ? <Text style={styles.error}>{error}</Text> : null}
-<TextInput
+
+      <TextInput
         style={styles.input}
         placeholder="Digite a sua tarefa"
         value={task}
         onChangeText={setTask}
       />
-<Button
+
+      <Button
         title={isLoading ? 'Adicionando...' : 'Adicionar Tarefa'}
         onPress={handleAddTask}
         disabled={isLoading}
       />
-</View>
+
+      {/* Botão para voltar à tela anterior */}
+      <Button title="Voltar" onPress={() => navigation.goBack()} />
+
+      {/* Botão para ir direto para a Home */}
+      <Button title="Home" onPress={() => navigation.navigate('Home')} />
+    </View>
   );
 };
- 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -80,5 +102,5 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 });
- 
+
 export default AddTaskScreen;

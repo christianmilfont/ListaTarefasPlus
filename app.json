@@ -2,6 +2,7 @@
   "expo": {
     "name": "TaskManagerApp",
     "slug": "TaskManagerApp",
+    "scheme": "listatarefasplus",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
